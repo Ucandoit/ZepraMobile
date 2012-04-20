@@ -1,0 +1,25 @@
+#user-editor,#code-editor {
+	margin: 10px 0 10px 0;
+}
+
+#connect-button,#option-button,#get-code-button {
+	margin: 25px 0 25px 0;
+}
+
+.li-exchange {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.read {
+	font-weight: normal;
+}
+
+.unread {
+	font-weight: bold;
+}
+
+.exchange-text-field,.document-text-field {
+	font-weight: bold;
+	margin: 5px 0 10px 0;
+}
