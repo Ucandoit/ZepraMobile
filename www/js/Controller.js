@@ -4,6 +4,7 @@ ZepraMobile.controller = function($, dataContext) {
 	var userEditorSelector = "#user-editor";
 	var codeEditorSelector = "#code-editor";
 	var rppsEditorSelector = "#rpps-editor";
+    var emailEditorSelector = "#email-editor";
 	var saveLoginCheckboxSelector = "#save-login-checkbox";
 	var getCodeButtonSelector = "#get-code-button";
 	var connectButtonSelector = "#connect-button";
@@ -206,14 +207,14 @@ ZepraMobile.controller = function($, dataContext) {
 	/**
 	 * get the code SMS
 	 */
-	var getCodeFromServer = function(login) {
+	var getCodeFromServer = function(login,email) {
 		var ws = new WebServiceCaller(webServiceUrl);
 		ws.onDone = function() {
 			if (ws.result === "Error") {
 				displayErrorDialog(connextionErrorMsg);
 			}
 		};
-		ws.call("GetOTP", '{"login":"' + login + '"}', true);
+		ws.call("GetOTP", '{"login":"' + login+ '","email":"' + email + '"}', true);
 	};
 
 	/**
@@ -264,6 +265,7 @@ ZepraMobile.controller = function($, dataContext) {
 
 		// validation
 		var login = $(userEditorSelector).val();
+        var email = $(emailEditorSelector).val();
 
 		if (login == "") {
 			console.log("login vide");
@@ -276,7 +278,7 @@ ZepraMobile.controller = function($, dataContext) {
 			return;
 		}
 
-		getCodeFromServer(login);
+		getCodeFromServer(login,email);
 	};
 
 	/**
@@ -367,6 +369,7 @@ ZepraMobile.controller = function($, dataContext) {
 			if (fromPageId === "") {
 				setSavedLogin();
 				$(rppsEditorSelector).val(dataContext.getRpps());
+                $(emailEditorSelector).val(dataContext.getEmail());
 				$(pushNotificationSelector).val(
 						dataContext.getPushStatus() ? "on" : "off");
 			} else if (fromPageId === optionPageId) {
@@ -463,7 +466,7 @@ ZepraMobile.controller = function($, dataContext) {
 	 * initialize all events
 	 */
 	var init = function() {
-        //$.mobile.defaultPageTransition = "flip";
+        $.mobile.defaultPageTransition = "slide";
 		$(document).bind("pagechange", onPageChange);
 		$(document).delegate(connectButtonSelector, "tap",
 				onConnectButtonTapped);

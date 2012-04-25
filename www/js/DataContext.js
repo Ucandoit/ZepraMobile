@@ -8,6 +8,7 @@ ZepraMobile.dataContext = function($) {
 	var storeStatusKey = "ZepraStoreStatus";
 	var rppsKey = "ZepraRpps";
 	var pushStatusKey = "ZepraPushNotification";
+    var emailKey = "ZepraEmail";
 
 	var loadExchangesFromLocalStorage = function() {
 		var storedExchanges = $.jStorage.get(exchangesListStorageKey);
@@ -63,6 +64,18 @@ ZepraMobile.dataContext = function($) {
 		}
 		return "";
 	};
+    
+    var setEmail = function(email) {
+		$.jStorage.set(emailKey, email);
+	};
+    
+	var getEmail = function() {
+		var email = $.jStorage.get(emailKey);
+		if (email != null) {
+			return email;
+		}
+		return "";
+	};
 
 	var setPushStatus = function(pushStatus) {
 		$.jStorage.set(pushStatusKey, pushStatus);
@@ -87,6 +100,8 @@ ZepraMobile.dataContext = function($) {
 		getStoreStatus : getStoreStatus,
 		setRpps : setRpps,
 		getRpps : getRpps,
+        setEmail : setEmail,
+		getEmail : getEmail,
 		setPushStatus : setPushStatus,
 		getPushStatus : getPushStatus
 	};
