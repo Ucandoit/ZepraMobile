@@ -39,11 +39,6 @@ ZepraMobile.controller = function($, dataContext) {
 	var webServiceUrl = "http://10.1.15.14:88/ZepraMobile/DocumentService.svc/";
 	// var webServiceUrl = "http://10.0.2.2:50458/DocumentService.svc/";
 
-	// used for debug
-	// the slider always performs twice for the first time so the first twice we
-	// do nothing
-	var flipChangedtimes = 0;
-
 	/**
 	 * set the default login
 	 */
@@ -141,7 +136,7 @@ ZepraMobile.controller = function($, dataContext) {
 				var j, document, liArray = [];
 				for (j = 0; j < documentsCount; j++) {
 					document = exchange.DocumentsMetadata[j];
-					var url = "http://10.0.2.2:62080/Default.aspx?guid="
+					var url = "http://10.1.15.14:88/ZepraMobilePDF/Default.aspx?guid="
 							+ document.Guid + "&localId=" + document.LocalId
 							+ "&siteId=" + document.SiteId;
 					liArray.push("<li>" + "<a data-url=\"" + url + "\" href=\""
@@ -407,7 +402,7 @@ ZepraMobile.controller = function($, dataContext) {
 		if (div != null && unread) {
 			img.attr("src", "css/images/email_open.png");
 			div.removeClass("unread").addClass("read");
-			markAsRead(login, rpps, exchangeId);
+			//markAsRead(login, rpps, exchangeId);
 		}
 
 		$.mobile.changePage("#" + exchangePageId);
@@ -454,20 +449,13 @@ ZepraMobile.controller = function($, dataContext) {
 	var onPushNotificationChanged = function() {
 		console.log("slider changed");
 
-		flipChangedtimes += 1;
-
-		if (flipChangedtimes > 2) {
 			if ($(this).val() == "on") {
 				// register
-				window.plugins.PushNotification.register("xzdykerik@gmail.com",
-						"ZepraMobile.controller.pushEvent", pushSuccess,
-						pushFail);
+				//window.plugins.PushNotification.register("xzdykerik@gmail.com","ZepraMobile.controller.pushEvent", pushSuccess,pushFail);
 			} else {
 				// unregister
-				window.plugins.PushNotification.unregister(pushSuccess,
-						pushFail);
+				//window.plugins.PushNotification.unregister(pushSuccess,pushFail);
 			}
-		}
 
 	};
 
@@ -475,6 +463,7 @@ ZepraMobile.controller = function($, dataContext) {
 	 * initialize all events
 	 */
 	var init = function() {
+        //$.mobile.defaultPageTransition = "flip";
 		$(document).bind("pagechange", onPageChange);
 		$(document).delegate(connectButtonSelector, "tap",
 				onConnectButtonTapped);

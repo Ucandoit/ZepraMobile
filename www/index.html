@@ -26,15 +26,16 @@
             <div data-role="content" id="login-content">
                 <!-- user field  -->
                 <label for="user-editor">Utilisateur:</label> <input type="text"
-				name="user-editor" id="user-editor" value="" />
+				name="user-editor" id="user-editor" class="text-editor" value="" />
                 <!-- password field  -->
                 <label for="code-editor">Code SMS:</label> <input type="password"
-				name="code-editor" id="code-editor" value="" />
+				name="code-editor" id="code-editor" class="text-editor" value="" />
                 <!-- button fields  -->
                 <a id="connect-button" href="" data-role="button" data-icon="arrow-r"
                     data-iconpos="right" data-theme="a">Connecter</a> <a
                         id="option-button" href="#option-page" data-role="button"
                         data-icon="gear" data-iconpos="right" data-theme="a">Options</a>
+                <a href="http://www.cse.iitk.ac.in/users/aca/dotnet/lecture_slides/dotnet_lec1.pdf">ViewPdf</a>
             </div>
         </div>
         <!-- option page -->
@@ -50,11 +51,14 @@
 					id="save-login-checkbox" class="custom" data-theme="a" /> <label
                         for="save-login-checkbox">Enregistrer login</label>
                 </div>
+                <!-- email field  -->
+                <label for="email-editor">Email:</label> <input type="text"
+				name="email-editor" id="email-editor" class="text-editor" value="" />
                 <a id="get-code-button" href="" data-role="button" data-icon="alert"
                     data-iconpos="right" data-theme="a">Demander code</a>
                 <!-- rpps field  -->
                 <label for="rpps-editor">Rpps:</label> <input type="text"
-				name="rpps-editor" id="rpps-editor" value="" />
+				name="rpps-editor" id="rpps-editor" class="text-editor" value="" />
                 <!-- flip -->
                 <label for="flip-push-notification">Inscrire à la
                     notification push:</label> <select name="slider" id="flip-push-notification"
