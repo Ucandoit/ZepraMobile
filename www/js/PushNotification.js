@@ -8,10 +8,10 @@ PushNotification.prototype.register = function(senderEmail, eventCallBack,
 			[ senderEmail, eventCallBack ]);
 };
 
-PushNotification.prototype.unregister = function(successCallback,
-		failureCallback) {
+PushNotification.prototype.unregister = function(eventCallBack,
+		successCallback, failureCallback) {
 	return PhoneGap.exec(successCallback, failureCallback,
-			"PushNotificationPlugin", "unregister", []);
+			"PushNotificationPlugin", "unregister", [ eventCallBack ]);
 };
 
 PhoneGap.addConstructor(function() {

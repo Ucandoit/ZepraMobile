@@ -1,130 +1,117 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-            <link href="css/jquery.mobile-1.1.0.min.css" rel="stylesheet"
-            type="text/css" />
-            <link href="css/zepra.mobile.css" rel="stylesheet" type="text/css" />
-            <title>Zepra Mobile</title>
-            <script type="text/javascript" src="js/libs/jquery-1.7.2.min.js"></script>
-            <script type="text/javascript" src="js/libs/jstorage.js"></script>
-            <script type="text/javascript" src="js/libs/phonegap-1.4.1.js"></script>
-            <script type="text/javascript" src="js/Util.js"></script>
-            <script type="text/javascript" src="js/DataContext.js"></script>
-            <script type="text/javascript" src="js/WebServiceCaller.js"></script>
-            <script type="text/javascript" src="js/Controller.js"></script>
-            <script type="text/javascript" src="js/PushNotification.js"></script>
-            <script type="text/javascript" src="js/libs/jquery.mobile-1.1.0.min.js"></script>
-    </head>
-    <body>
-        <!-- login page  -->
-        <div data-role="page" id="login-page" data-title="Zepra Mobile">
-            <div data-role="header" data-position="fixed">
-                <h1>Zepra Mobile</h1>
-            </div>
-            <div data-role="content" id="login-content">
-                <!-- user field  -->
-                <label for="user-editor">Utilisateur:</label> <input type="text"
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<link href="css/jquery.mobile-1.1.0.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="css/zepra.mobile.css" rel="stylesheet" type="text/css" />
+<title>Zepra Mobile</title>
+<script type="text/javascript" src="js/libs/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/libs/jstorage.js"></script>
+<script type="text/javascript" src="js/libs/phonegap-1.4.1.js"></script>
+<script type="text/javascript" src="js/Util.js"></script>
+<script type="text/javascript" src="js/DataContext.js"></script>
+<script type="text/javascript" src="js/WebServiceCaller.js"></script>
+<script type="text/javascript" src="js/Controller.js"></script>
+<!--<script type="text/javascript" src="js/PushNotification.js"></script>-->
+<script type="text/javascript" src="js/IosPushNotification.js"></script>
+<script type="text/javascript" src="js/ChildBrowser.js"></script>
+<script type="text/javascript" src="js/libs/jquery.mobile-1.1.0.min.js"></script>
+</head>
+<body>
+	<!-- login page  -->
+	<div data-role="page" id="login-page" data-title="Zepra Mobile">
+		<div data-role="header" data-position="fixed">
+			<h1>Zepra Mobile</h1>
+		</div>
+		<div data-role="content" id="login-content">
+			<!-- user field  -->
+			<label for="user-editor">Utilisateur:</label> <input type="text"
 				name="user-editor" id="user-editor" class="text-editor" value="" />
-                <!-- password field  -->
-                <label for="code-editor">Code SMS:</label> <input type="password"
+			<!-- password field  -->
+			<label for="code-editor">Code SMS:</label> <input type="password"
 				name="code-editor" id="code-editor" class="text-editor" value="" />
-                <!-- button fields  -->
-                <a id="connect-button" href="" data-role="button" data-icon="arrow-r"
-                    data-iconpos="right" data-theme="a">Connecter</a> <a
-                        id="option-button" href="#option-page" data-role="button"
-                        data-icon="gear" data-iconpos="right" data-theme="a">Options</a>
-            </div>
-        </div>
-        <!-- option page -->
-        <div data-role="page" id="option-page" data-title="Options">
-            <div data-role="header" data-position="fixed">
-                <a href="#login-page" data-icon="back" data-rel="back">Back</a>
-                <h1>Options</h1>
-            </div>
-            <div data-role="content" id="option-content">
-                <!-- options -->
-                <div id="div-checkbox">
-                    <input type="checkbox" name="save-login-checkbox"
+			<!-- button fields  -->
+			<a id="connect-button" href="" data-role="button" data-icon="arrow-r"
+				data-iconpos="right" data-theme="a">Connecter</a> <a
+				id="option-button" href="#option-page" data-role="button"
+				data-icon="gear" data-iconpos="right" data-theme="a">Options</a>
+            <img id="load-image" src="css/images/ajax-loader.gif" />
+		</div>
+	</div>
+	<!-- option page -->
+	<div data-role="page" id="option-page" data-title="Options">
+		<div data-role="header" data-position="fixed">
+			<a href="#login-page" data-icon="back" data-rel="back">Back</a>
+			<h1>Options</h1>
+		</div>
+		<div data-role="content" id="option-content">
+			<!-- options -->
+			<div id="div-checkbox">
+				<input type="checkbox" name="save-login-checkbox"
 					id="save-login-checkbox" class="custom" data-theme="a" /> <label
-                        for="save-login-checkbox">Enregistrer login</label>
-                </div>
-                <!-- email field  -->
-                <label for="email-editor">Email:</label> <input type="text"
+					for="save-login-checkbox">Enregistrer login</label>
+			</div>
+			<!-- email field  -->
+			<label for="email-editor">Email:</label> <input type="text"
 				name="email-editor" id="email-editor" class="text-editor" value="" />
-                <a id="get-code-button" href="" data-role="button" data-icon="alert"
-                    data-iconpos="right" data-theme="a">Demander code</a>
-                <!-- rpps field  -->
-                <label for="rpps-editor">Rpps:</label> <input type="text"
+			<a id="get-code-button" href="" data-role="button" data-icon="alert"
+				data-iconpos="right" data-theme="a">Demander code</a>
+			<!-- rpps field  -->
+			<label for="rpps-editor">Rpps:</label> <input type="text"
 				name="rpps-editor" id="rpps-editor" class="text-editor" value="" />
-                <!-- flip -->
-                <label for="flip-push-notification">Inscrire à la
-                    notification push:</label> <select name="slider" id="flip-push-notification"
-                        data-role="slider" data-theme="a">
-                        <option value="off">Non</option>
-                        <option value="on">Oui</option>
-                    </select>
-            </div>
-        </div>
-        <!-- exchanges list page  -->
-        <div data-role="page" id="exchanges-list-page" data-title="Messagerie">
-            <div data-role="header" data-position="fixed">
-                <a href="#exchange-page" data-icon="back" data-rel="back">Back</a>
-                <h1>Messagerie</h1>
-                <a id="refresh-button" href="" data-icon="refresh"
-                    class="ui-btn-right">Refresh</a>
-            </div>
-            <div data-role="content" id="exchanges-list-content"></div>
-        </div>
-        <!-- exchange page  -->
-        <div data-role="page" id="exchange-page" data-title="Metadonnees">
-            <div data-role="header" data-position="fixed">
-                <a href="#exchanges-list-page" data-icon="back" data-rel="back">Back</a>
-                <h1>Métadonnées</h1>
-            </div>
-            <div data-role="content" id="exchange-content">
-                <!-- reception date field  -->
-                <label for="exchange-reception-date-editor">Date de
-                    réception:</label>
-                <div id="exchange-reception-date-editor" class="exchange-text-field"></div>
-                <!-- author field  -->
-                <label for="exchange-author-editor">Auteur:</label>
-                <div id="exchange-author-editor" class="exchange-text-field"></div>
-                <!-- patient field  -->
-                <label for="exchange-patient-editor">Patient:</label>
-                <div id="exchange-patient-editor" class="exchange-text-field"></div>
-                <!-- health structure field  -->
-                <label for="exchange-health-structure-editor">Etablissement:</label>
-                <div id="exchange-health-structure-editor"
-                    class="exchange-text-field"></div>
-                <div id="documents-list-content"></div>
-            </div>
-        </div>
-        <!-- document page  -->
-        <div data-role="page" id="document-page" data-title="Document">
-            <div data-role="header" data-position="fixed">
-                <a href="#exchange-page" data-icon="back" data-rel="back">Back</a>
-                <h1>Document</h1>
-            </div>
-            <div data-role="content" id="document-content">
-                <!-- creation date field  -->
-                <label for="document-creation-date-editor">Date de création:</label>
-                <div id="document-creation-date-editor" class="document-text-field"></div>
-                <!-- version field  -->
-                <label for="document-version-editor">Version:</label>
-                <div id="document-version-editor" class="document-text-field"></div>
-                <!-- document viewer -->
-                <label for="document-viewer">Content:</label>
-                <div id="document-viewer"></div>
-            </div>
-        </div>
-        <!-- error dialog  -->
-        <div id="error-dialog" data-role="dialog" data-theme="c">
-            <div data-role="header" style="margin-top: 30%;">
-                <h1>Erreur!</h1>
-            </div>
-            <div data-role="content" id="error-dialog-content"></div>
-        </div>
-    </body>
+			<!-- flip -->
+			<label for="flip-push-notification">Inscrire à la
+				notification push:</label> <select name="slider" id="flip-push-notification"
+				data-role="slider" data-theme="a">
+				<option value="off">Non</option>
+				<option value="on">Oui</option>
+			</select>
+			<!-- test push button -->
+			<a id="push-button" data-role="button" data-theme="a">Push</a>
+		</div>
+	</div>
+	<!-- exchanges list page  -->
+	<div data-role="page" id="exchanges-list-page" data-title="Messagerie">
+		<div data-role="header" data-position="fixed">
+			<a href="#exchange-page" data-icon="back" data-rel="back">Back</a>
+			<h1>Messagerie</h1>
+			<a id="refresh-button" href="" data-icon="refresh"
+				class="ui-btn-right">Refresh</a>
+		</div>
+		<div data-role="content" id="exchanges-list-content"></div>
+	</div>
+	<!-- exchange page  -->
+	<div data-role="page" id="exchange-page" data-title="Metadonnees">
+		<div data-role="header" data-position="fixed">
+			<a href="#exchanges-list-page" data-icon="back" data-rel="back">Back</a>
+			<h1>Métadonnées</h1>
+		</div>
+		<div data-role="content" id="exchange-content">
+			<!-- reception date field  -->
+			<label for="exchange-reception-date-editor">Date de
+				réception:</label>
+			<div id="exchange-reception-date-editor" class="exchange-text-field"></div>
+			<!-- author field  -->
+			<label for="exchange-author-editor">Auteur:</label>
+			<div id="exchange-author-editor" class="exchange-text-field"></div>
+			<!-- patient field  -->
+			<label for="exchange-patient-editor">Patient:</label>
+			<div id="exchange-patient-editor" class="exchange-text-field"></div>
+			<!-- health structure field  -->
+			<label for="exchange-health-structure-editor">Etablissement:</label>
+			<div id="exchange-health-structure-editor"
+				class="exchange-text-field"></div>
+			<div id="documents-list-content"></div>
+		</div>
+	</div>
+	<!-- error dialog  -->
+	<div id="error-dialog" data-role="dialog" data-theme="c">
+		<div data-role="header" style="margin-top: 30%;">
+			<h1>Erreur!</h1>
+		</div>
+		<div data-role="content" id="error-dialog-content"></div>
+	</div>
+</body>
 </html>

@@ -1,3 +1,6 @@
+var targetPlatform = "iOS";
+//var targetPlatform = "Android";
+
 /**
  * convert the date string to French format
  */
